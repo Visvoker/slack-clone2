@@ -13,7 +13,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 
-import { SignInFlow } from "../type"
+import { SignInFlow } from "../types"
 
 interface SignInCardProps {
   setState: (state: SignInFlow) => void

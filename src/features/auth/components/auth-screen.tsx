@@ -1,14 +1,13 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
-import { SignInFlow } from "../type"
+import { SignInFlow } from "../types";
+import { SignInCard } from "./sign-in-card";
+import { SignUpCard } from "./sign-up-card";
 
-import { SignInCard } from "./sign-in-card"
-import { SignUpCard } from "./sign-up-card"
-
-export default function AuthScreen() {
-  const [state, setState] = useState<SignInFlow>("signIn")
+export const AuthScreen = () => {
+  const [state, setState] = useState<SignInFlow>("signIn");
 
   return (
     <div className="h-full flex items-center justify-center bg-[#5C3B58]">
@@ -16,5 +15,5 @@ export default function AuthScreen() {
         {state === "signIn" ? <SignInCard setState={setState} /> : <SignUpCard setState={setState} />}
       </div>
     </div>
-  )
-}
+  );
+};
