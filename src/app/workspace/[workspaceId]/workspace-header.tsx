@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ChevronDown, ListFilter, SquarePen } from "lucide-react"
 
 import { Hint } from "@/components/hint"
@@ -9,7 +10,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import workspaceIdPage from "./page";
+
+import { PreferencesModal } from "./preferences-modal";
 import { Doc } from "../../../../convex/_generated/dataModel";
 
 interface WorkspaceHeaderProps {
@@ -18,9 +20,11 @@ interface WorkspaceHeaderProps {
 }
 
 export const WorkspaceHeader = ({ workspace, isAdmin }: WorkspaceHeaderProps) => {
+  const [preferencesOpen, setPreferencesOpen] = useState(false);
 
   return (
     <>
+      <PreferencesModal open={preferencesOpen} setOpen={setPreferencesOpen} initialValue={workspace.name} />
       <div className="flex items-center justify-between px-4 h-[49px] gap-0.5">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -48,12 +52,14 @@ export const WorkspaceHeader = ({ workspace, isAdmin }: WorkspaceHeaderProps) =>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className="cursor-point py-2"
+                  onClick={() => { }}
                 >
                   Invite people to {workspace.name}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className="cursor-point py-2"
+                  onClick={() => setPreferencesOpen(true)}
                 >
                   Preferences
                 </DropdownMenuItem>
