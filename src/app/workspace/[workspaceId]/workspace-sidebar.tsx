@@ -13,6 +13,7 @@ export const WorkspaceSidebar = () => {
 
   const { data: member, isLoading: memberLoading } = useCurrentMember({ workspaceId });
   const { data: workspace, isLoading: workspaceLoading } = useGetWorkspace({ id: workspaceId });
+  
 
   if (workspaceLoading || memberLoading) {
     return (
