@@ -10,6 +10,7 @@ import { useWorkspaceId } from "@/hooks/use-workspace-id";
 import { SidebarItem } from "./sidebar-item";
 import { WorkspaceHeader } from "./workspace-header";
 import { WorkspaceSection } from "./workspace-section";
+import { UserItem } from "./user-item";
 
 export const WorkspaceSidebar = () => {
   const workspaceId = useWorkspaceId();
@@ -67,9 +68,19 @@ export const WorkspaceSidebar = () => {
           />
         ))}
       </WorkspaceSection>
-      {members?.map((item) => (
-        <div>{item.user.name}</div>
-      ))}
+      <WorkspaceSection
+        label="Direct Messages"
+        hint="New direct message"
+      >
+        {members?.map((item) => (
+          <UserItem
+            key={item._id}
+            id={item._id}
+            label={item.user.name}
+            image={item.user.image}
+          />
+        ))}
+      </WorkspaceSection>
     </div>
   );
 };
