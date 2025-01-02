@@ -25,7 +25,7 @@ const JoinPage = () => {
   const isMember = useMemo(() => data?.isMember, [data?.isMember])
 
   useEffect(() => {
-    if (!isMember) {
+    if (isMember) {
       router.push(`/workspace/${workspaceId}`)
     }
   }, [isMember, router, workspaceId])
@@ -33,7 +33,7 @@ const JoinPage = () => {
   const handleComplete = (value: string) => {
     mutate({ workspaceId, joinCode: value }, {
       onSuccess: (id) => {
-        router.push(`/workspace/${id}`)
+        router.replace(`/workspace/${id}`)
         toast.success("Workspace joined");
       },
       onError: () => {

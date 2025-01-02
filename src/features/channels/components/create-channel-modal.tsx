@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import {
   Dialog,
@@ -12,9 +13,11 @@ import { useWorkspaceId } from "@/hooks/use-workspace-id";
 
 import { useCreateChannel } from "../api/use-create-channels";
 import { useCreateChannelModal } from "../store/use-create-channel-modal";
+import { toast } from "sonner";
 
 export const CreateChannelModal = () => {
   const workspaceId = useWorkspaceId();
+  const router = useRouter();
 
   const { mutate, isPending } = useCreateChannel();
   const [open, setOpen] = useCreateChannelModal();
@@ -37,12 +40,16 @@ export const CreateChannelModal = () => {
       { name, workspaceId },
       {
         onSuccess: (id) => {
+          toast.success("Channel created");
+          router.push(`/workspace/${workspaceId}/channel/${id}`);
           handleClose();
+        },
+        onError: () => {
+          toast.error("Failed to create channel");
         }
-      }
-    )
-
-  }
+      },
+    );
+  };
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
