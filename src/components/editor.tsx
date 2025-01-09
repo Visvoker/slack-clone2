@@ -159,7 +159,10 @@ const Editor = ({
         onChange={(event) => setImage(event.target.files![0])}
         className="hidden"
       />
-      <div className="flex flex-col border border-slate-200 rounded-md overflow-hidden">
+      <div className={cn(
+        "flex flex-col border border-slate-200 rounded-md overflow-hidden focus-within:border-slate-300 focus-within:shadow-sm transition bg-white",
+        disabled && "opacity-50"
+      )}>
         <div ref={containerRef} className="h-full ql-custom" />
         {!!image && (
           <div className="p-2">
@@ -263,16 +266,18 @@ const Editor = ({
           )}
         </div>
       </div>
-      {variant === "create" && (
-        <div className={cn(
-          "p-2 text-[10px] text-muted-foreground flex justify-end opacity-0 transition",
-          !isEmpty && "opacity-100"
-        )}>
-          <p>
-            <strong>Shift + Return</strong> to add a new line
-          </p>
-        </div>
-      )}
+      {
+        variant === "create" && (
+          <div className={cn(
+            "p-2 text-[10px] text-muted-foreground flex justify-end opacity-0 transition",
+            !isEmpty && "opacity-100"
+          )}>
+            <p>
+              <strong>Shift + Return</strong> to add a new line
+            </p>
+          </div>
+        )
+      }
     </div >
   );
 };
