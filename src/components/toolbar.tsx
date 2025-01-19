@@ -12,7 +12,7 @@ interface ToolbarProps {
   handleDelete: () => void;
   handleReaction: (value: string) => void;
   hideThreadButton?: boolean;
-}
+};
 
 export const Toolbar = ({
   isAuthor,
@@ -21,7 +21,7 @@ export const Toolbar = ({
   handleThread,
   handleDelete,
   handleReaction,
-  hideThreadButton
+  hideThreadButton,
 }: ToolbarProps) => {
   return (
     <div className="absolute top-0 right-5">
@@ -75,6 +75,6 @@ export const Toolbar = ({
           </Hint>
         )}
       </div>
-    </div >
+    </div>
   )
-}
+};

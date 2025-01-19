@@ -1,6 +1,7 @@
 import { useState } from "react";
-import data from '@emoji-mart/data';
+import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react';
+import { init, getEmojiDataFromNative } from 'emoji-mart'
 
 import {
   Popover,
@@ -17,7 +18,7 @@ import {
 interface EmojiPopoverProps {
   children: React.ReactNode;
   hint?: string;
-  onEmojiSelect: (emoji: any) => void;
+  onEmojiSelect: (value: string) => void;
 }
 
 export const EmojiPopover = ({
@@ -29,9 +30,8 @@ export const EmojiPopover = ({
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const onSelect = (emoji: any) => {
-    onEmojiSelect(emoji);
+    onEmojiSelect(emoji.native);
     setPopoverOpen(false);
-
     setTimeout(() => {
       setTooltipOpen(false);
     }, 500);

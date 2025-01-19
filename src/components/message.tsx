@@ -153,8 +153,7 @@ export const Message = ({
                     (edited)
                   </span>
                 ) : null}
-                {JSON.stringify(reactions)}
-                {/* <Reactions data={reactions} onChange={handleReaction} /> */}
+                <Reactions data={reactions} onChange={handleReaction} />
               </div>
             )}
           </div>
@@ -225,7 +224,7 @@ export const Message = ({
               {updatedAt ? (
                 <span className="text-xs text-muted-foreground">(edited)</span>
               ) : null}
-              {/* <Reactions data={reactions} onChange={handleReaction} /> */}
+              <Reactions data={reactions} onChange={handleReaction} />
             </div>
           )}
         </div>

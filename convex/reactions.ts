@@ -61,7 +61,7 @@ export const toggle = mutation({
         value: args.value,
         memberId: member._id,
         messageId: message._id,
-        workspaceId: message.workspaceId,
+        workspaceId: message.workspaceId
       });
 
       return newReactionId;
