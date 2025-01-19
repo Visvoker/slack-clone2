@@ -61,8 +61,6 @@ export const ChatInput = ({ placeholder }: ChatInputProps) => {
           throw new Error("Url not found");
         }
 
-        console.log(values)
-
         const result = await fetch(url, {
           method: "POST",
           headers: { "Content-Type": image.type },
@@ -72,7 +70,6 @@ export const ChatInput = ({ placeholder }: ChatInputProps) => {
         if (!result) {
           throw new Error("Failed to upload image")
         }
-        console.log({ result })
 
         const { storageId } = await result.json();
 

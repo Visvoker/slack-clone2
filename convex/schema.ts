@@ -1,6 +1,6 @@
-import { defineSchema, defineTable } from "convex/server";
-import { authTables } from "@convex-dev/auth/server";
 import { v } from "convex/values";
+import { authTables } from "@convex-dev/auth/server";
+import { defineSchema, defineTable } from "convex/server";
 
 const schema = defineSchema({
   ...authTables,
@@ -24,7 +24,7 @@ const schema = defineSchema({
     .index("by_workspace_id", ["workspaceId"]),
   conversations: defineTable({
     workspaceId: v.id("workspaces"),
-    memberoneId: v.id("members"),
+    memberOneId: v.id("members"),
     memberTwoId: v.id("members"),
   })
     .index("by_workspace_id", ["workspaceId"]),
@@ -54,7 +54,7 @@ const schema = defineSchema({
     memberId: v.id("members"),
     value: v.string(),
   })
-    .index("by_wrokspace_id", ["workspaceId"])
+    .index("by_workspace_id", ["workspaceId"])
     .index("by_message_id", ["messageId"])
     .index("by_member_id", ["memberId"])
 });
