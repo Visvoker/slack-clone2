@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { differenceInMinutes, format, isToday, isYesterday } from "date-fns";
+import { differenceInMinutes, endOfYesterday, format, isToday, isYesterday } from "date-fns";
 
 import { useCurrentMember } from "@/features/members/api/use-current-member";
 import { GetMessagesReturnType } from "@/features/messages/api/use-get-messages";
@@ -9,6 +9,7 @@ import { ChannelHero } from "./channel-hero";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
 
 import { Id } from "../../convex/_generated/dataModel";
+import { Loader } from "lucide-react";
 
 const TIME_THRESHOLD = 5;
 
@@ -103,6 +104,32 @@ export const MessageList = ({
           })}
         </div>
       ))}
+      <div
+        className="h-1"
+        ref={(el) => {
+          if (el) {
+            const observe = new IntersectionObserver(
+              ([entry]) => {
+                if (entry.isIntersecting && canLoadMore) {
+                  loadMore();
+                }
+              },
+              { threshold: 1.0 }
+            );
+
+            observe.observe(el);
+            return () => observe.disconnect();
+          }
+        }}
+      />
+      {isLoadingMore && (
+        <div className="text-center my-2 relative">
+          <hr className="absolute top-1/2 left-0 right-0 border-t border-gray-300" />
+          <span className="relative inline-block bg-white px-4 py-1 rounded-full text-xs border border-gray-300 shadow-sm">
+            <Loader className="size-4 animate-spin" />
+          </span>
+        </div>
+      )}
       {variant === "channel" && channelName && channelCreationTime && (
         <ChannelHero
           name={channelName}
