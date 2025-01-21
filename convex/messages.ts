@@ -17,6 +17,7 @@ const populateThread = async (ctx: QueryCtx, messageId: Id<"messages">) => {
       count: 0,
       image: undefined,
       timestamp: 0,
+      name: ""
     };
   }
 
@@ -28,6 +29,7 @@ const populateThread = async (ctx: QueryCtx, messageId: Id<"messages">) => {
       count: 0,
       image: undefined,
       timestamp: 0,
+      name: "",
     };
   }
 
@@ -244,7 +246,7 @@ export const get = query({
         q
           .eq("channelId", args.channelId)
           .eq("parentMessageId", args.parentMessageId)
-          .eq("conversationId", args.conversationId)
+          .eq("conversationId", _conversationId)
       )
       .order("desc")
       .paginate(args.paginationOpts);
@@ -307,6 +309,7 @@ export const get = query({
               reactions: reactionsWithoutMemberIdProperty,
               threadCount: thread.count,
               threadImage: thread.image,
+              threadName: thread.name,
               threadTimestamp: thread.timestamp,
             };
           })
