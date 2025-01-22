@@ -10,6 +10,7 @@ import { useMemberId } from "@/hooks/use-member-id";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
 
 import { Id } from "../../../../../../convex/_generated/dataModel";
+import { Conversation } from "./conversation";
 
 const MemberIdPage = () => {
   const memberId = useMemberId()
@@ -52,11 +53,7 @@ const MemberIdPage = () => {
     );
   }
 
-  return (
-    <div>
-      <div>{JSON.stringify(conversationId)}</div>
-    </div>
-  )
+  return <Conversation id={conversationId} />
 }
 
 export default MemberIdPage;

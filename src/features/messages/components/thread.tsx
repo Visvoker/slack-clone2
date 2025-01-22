@@ -241,6 +241,21 @@ export const Thread = ({ messageId, onClose }: ThreadProps) => {
             </span>
           </div>
         )}
+        <Message
+          hideThreadButton
+          memberId={message.memberId}
+          authorImage={message.user.image}
+          authorName={message.user.name}
+          isAuthor={message.memberId === currentMember?._id}
+          body={message.body}
+          image={message.image}
+          createdAt={message._creationTime}
+          updatedAt={message.updatedAt}
+          id={message._id}
+          reactions={message.reactions}
+          isEditing={editingId === message._id}
+          setEditingId={setEditingId}
+        />
       </div>
       <div className="px-4">
         <Editor
