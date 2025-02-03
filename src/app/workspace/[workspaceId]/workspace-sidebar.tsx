@@ -21,6 +21,7 @@ export const WorkspaceSidebar = () => {
   const memberId = useMemberId();
 
   const [_open, setOpen] = useCreateChannelModal();
+  /* eslint-disable @typescript-eslint/no-unused-vars */
 
   const { data: member, isLoading: memberLoading } = useCurrentMember({ workspaceId });
   const { data: workspace, isLoading: workspaceLoading } = useGetWorkspace({ id: workspaceId });

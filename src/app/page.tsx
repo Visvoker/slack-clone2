@@ -1,4 +1,5 @@
 "use client"
+
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo } from "react";
 
@@ -9,6 +10,7 @@ import { useCreateWorkspaceModal } from "@/features/workspaces/store/use-create-
 export default function Home() {
   const router = useRouter();
   const [open, setOpen] = useCreateWorkspaceModal();
+  /* eslint-disable @typescript-eslint/no-unused-vars */
 
   const { data, isLoading } = useGetWorkspaces();
 

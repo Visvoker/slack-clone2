@@ -18,6 +18,7 @@ export const WorkspaceSwitcher = () => {
   const router = useRouter();
   const workspaceId = useWorkspaceId();
   const [_open, setOpen] = useCreateWorkspaceModal();
+  /* eslint-disable @typescript-eslint/no-unused-vars */
 
   const { data: workspaces, } = useGetWorkspaces();
   const { data: workspace, isLoading: workspaceLoading } = useGetWorkspace({ id: workspaceId });
