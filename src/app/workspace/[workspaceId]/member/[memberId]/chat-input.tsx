@@ -31,7 +31,6 @@ export const ChatInput = ({ placeholder, conversationId }: ChatInputProps) => {
 
   const editorRef = useRef<Quill | null>(null);
 
-  const channelId = useChannelId();
   const workspaceId = useWorkspaceId();
 
   const { mutate: generateUploadUrl } = useGenerateUploadUrl();

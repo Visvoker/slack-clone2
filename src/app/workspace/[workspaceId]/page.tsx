@@ -12,7 +12,7 @@ import { Loader, TriangleAlert } from "lucide-react";
 import { useCurrentMember } from "@/features/members/api/use-current-member";
 
 
-const workspaceIdPage = () => {
+const WorkspaceIdPage = () => {
   const router = useRouter();
   const workspaceId = useWorkspaceId();
   const [open, setopen] = useCreateChannelModal();
@@ -75,4 +75,4 @@ const workspaceIdPage = () => {
   );
 };
 
-export default workspaceIdPage;
+export default WorkspaceIdPage;

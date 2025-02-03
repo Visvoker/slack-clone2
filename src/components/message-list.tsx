@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { differenceInMinutes, endOfYesterday, format, isToday, isYesterday } from "date-fns";
+import { differenceInMinutes, format, isToday, isYesterday } from "date-fns";
 import { Loader } from "lucide-react";
 
 import { useCurrentMember } from "@/features/members/api/use-current-member";

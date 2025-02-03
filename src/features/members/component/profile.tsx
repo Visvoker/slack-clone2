@@ -22,7 +22,6 @@ import { useCurrentMember } from "../api/use-current-member";
 
 import { Id } from "../../../../convex/_generated/dataModel";
 import { useConfirm } from "@/hooks/use-confirm";
-import { off } from "node:process";
 
 interface ProfileProps {
   memberId: Id<"members">;
@@ -52,8 +51,8 @@ export const Profile = ({
   const { data: member, isLoading: isLoadingMember } = useGetMember({ id: memberId })
   const { data: currentMember, isLoading: isLoadingCurrentMember } = useCurrentMember({ workspaceId })
 
-  const { mutate: updateMember, isPending: isUpdatingMember } = useUpdateMember();
-  const { mutate: removeMember, isPending: isRemovingMember } = useRemoveMember();
+  const { mutate: updateMember } = useUpdateMember();
+  const { mutate: removeMember } = useRemoveMember();
 
   const onRemove = async () => {
     const ok = await confirmRemove();

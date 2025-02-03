@@ -5,7 +5,7 @@ import { api } from "../../../../convex/_generated/api";
 
 type ResponseType = string | null;
 
-type Option = {
+type Options = {
   onSuccess?: (data: ResponseType) => void;
   onError?: (error: Error) => void;
   onSettled?: () => void;
@@ -24,7 +24,7 @@ export const useGenerateUploadUrl = () => {
 
   const mutation = useMutation(api.upload.generateUploadUrl);
 
-  const mutate = useCallback(async (_values: {}, options?: Option) => {
+  const mutate = useCallback(async (_values: {}, options?: Options) => {
     try {
       setData(null);
       setError(null);

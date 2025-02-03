@@ -22,8 +22,7 @@ export default function Home() {
     } else {
       setOpen(true);
     }
-
-  }, [workspaceId, isLoading, open, setOpen]);
+  }, [isLoading, workspaceId, router, setOpen]);
 
   return (
     <div>
